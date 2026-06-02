@@ -58,6 +58,21 @@ struct ContentView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .top)
                 .padding(.top, 8)
+
+                // Floating bottom action button
+                VStack {
+                    Spacer()
+                    Button {
+                        // TODO: Load the next adventure
+                    } label: {
+                        Label("Next Adventure", systemImage: "arrow.right.circle.fill")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.large)
+                    .padding(.horizontal)
+                    .padding(.bottom, 16)
+                }
             }
             .navigationTitle("Micro Adventures")
             #if !os(macOS)
@@ -238,17 +253,7 @@ private struct Pill: View {
         .padding(.horizontal, 10)
         .background(
             Capsule(style: .continuous)
-                .fill(
-                    {
-                        #if canImport(UIKit)
-                        Color(UIColor.secondarySystemBackground).opacity(0.6)
-                        #elseif canImport(AppKit)
-                        Color(NSColor.windowBackgroundColor).opacity(0.6)
-                        #else
-                        Color.white.opacity(0.6)
-                        #endif
-                    }()
-                )
+                .fill(.ultraThinMaterial)
         )
         .overlay(
             Capsule(style: .continuous)
